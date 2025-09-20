@@ -6,6 +6,7 @@
 #include "esp_sleep.h"
 #include "driver/rtc_io.h"
 
+
 /*******************************************************
  * Project: Smart Cat Feeder – ESP32-CAM with PIR & Telegram
  * File:    "cat_feeder.cpp"
@@ -24,11 +25,8 @@
  *******************************************************/
 
 // ================== USER CONFIG ==================
-const char* WIFI_SSID     = "BeSpotCBF5_2.4";       // <-- change
-const char* WIFI_PASSWORD = "8800CBF5";   // <-- change
 
-const char* BOT_TOKEN = "8495637258:AAFyFMY3zb3x4jAgKSwHYjnGaaJ_UnMuAqI";  // <-- change (from BotFather)
-const char* CHAT_ID   = "-1003049927695";  
+#include "user_wifi_and_telegram_config.h"
 
 // Optional caption for the photo:
 const char* PHOTO_CAPTION = "ESP32-CAM snapshot 📸";
