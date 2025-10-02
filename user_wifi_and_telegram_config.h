@@ -11,9 +11,9 @@
  */
 
 // ---- Wi-Fi ----
-#define WIFI_SSID      "BeSpotCBF5_2.4"
-#define WIFI_PASSWORD  "8800CBF5"
+#define WIFI_SSID      "WIFI_SSID"
+#define WIFI_PASSWORD  "WIFI_PASSWORD"
 
 // ---- Telegram ----
-#define BOT_TOKEN  "8495637258:AAFyFMY3zb3x4jAgKSwHYjnGaaJ_UnMuAqI"
-#define CHAT_ID    "-1003049927695"   // private group or user chat id
+#define BOT_TOKEN  "BOT_TOKEN"
+#define CHAT_ID    "CHAT_ID"   // private group or user chat id
