@@ -177,7 +177,7 @@ All hardware listed below matches the gear currently on hand.
 - [x] `/snap` and `/ignore` commands
 - [ ] `/feed` command to drive MG996 360°
 - [ ] “Going back to sleep” Telegram status on deep-sleep entry
-- [ ] Motion “two-button” message (simulate trigger on boot for testing)
+- [x] Motion “two-button” message (simulate trigger on boot for testing)
 - [ ] Power profiling & sleep current reduction
 - [ ] (Optional) Sound deterrent **(requires extra buzzer – not in current parts)**
 
