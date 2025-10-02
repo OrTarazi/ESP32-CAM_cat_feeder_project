@@ -38,6 +38,8 @@ All hardware listed below matches the gear currently on hand.
 - **Digital Multimeter DT9205A** (bring-up & debugging)
 - **Plastic Organizer Box** (for sanity 😺)
 
+![Cat Feeder Setup](photos_and_diagrams/Cat-feeder_assembley.png)
+
 > Everything above is already owned. If a step needs anything else, it will be called out explicitly as “extra”.
 
 ---
@@ -87,7 +89,7 @@ All hardware listed below matches the gear currently on hand.
    const char* WIFI_SSID     = "YOUR_WIFI";
    const char* WIFI_PASSWORD = "YOUR_PASS";
    const char* BOT_TOKEN     = "123456789:ABC..."; // from @BotFather
-   const char* CHAT_ID       = "-1001234567890";   // your group/private chat id
+   const char* CHAT_ID       = "-100200300..";   // your group/private chat id
    ```
 5. **Programmer**: use the ESP32-CAM programmer/FTDI (IO0 → GND for flashing).
 6. **Upload**, then remove IO0-GND and **reset** to run.
@@ -111,6 +113,7 @@ All hardware listed below matches the gear currently on hand.
 - `/feed` → drive MG996 360° for a fixed duration (dispense)
 
 ![Cat Feeder Setup](photos_and_diagrams/Cat-feeder_workflow.jpg)
+
 
 
 ---
