@@ -1,0 +1,2 @@
+# Ignore local Wi-Fi and Telegram secrets
+user_wifi_and_telegram_config.h
