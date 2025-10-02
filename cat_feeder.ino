@@ -1,12 +1,6 @@
-#include <Arduino.h>
-#include "esp_camera.h"
-#include <WiFi.h>
-#include <WiFiClientSecure.h>
-#include "esp_bt.h"   // to disable BT for power saving (optional)
-#include "esp_sleep.h"
-#include "driver/rtc_io.h"
+
 #include "cat_feeder.h"
-#include "user_wifi_and_telegram_config.h"
+
 
 void setup() {
   // Optional: disable Bluetooth stack to save power

@@ -1,8 +1,17 @@
 #include <Arduino.h>
 #include "cat_feeder.h"
 
+// Single owning definitions:
+uint32_t lastPollMs   = 0;
+long     lastUpdateId = -1;
+
+// Also define PHOTO_CAPTION here (since it's only declared extern in the header)
+const char* PHOTO_CAPTION = "ESP32-CAM snapshot 📸";
+
+
 // ------------ small helpers ------------
 // NOTE: no default args here — defaults live in cat_feeder.h
+
 void flashBlink(int times, int on_ms, int off_ms) {
   pinMode(LED_FLASH_PIN, OUTPUT);
   for (int i = 0; i < times; ++i) {
@@ -441,7 +450,7 @@ static void configurePirRtcInput() {
   rtc_gpio_pulldown_en((gpio_num_t)PIR_PIN);  // idle LOW
 }
 
-static void logWakeCause() {
+void logWakeCause() {
   esp_sleep_wakeup_cause_t cause = esp_sleep_get_wakeup_cause();
   switch (cause) {
     case ESP_SLEEP_WAKEUP_EXT1: Serial.println("[BOOT] Wake: EXT1 (PIR)"); break;
@@ -452,7 +461,7 @@ static void logWakeCause() {
   }
 }
 
-static void enterDeepSleep() {
+void enterDeepSleep() {
   configurePirRtcInput();
   esp_sleep_enable_ext1_wakeup(1ULL << PIR_PIN, ESP_EXT1_WAKEUP_ANY_HIGH);
   Serial.println("[SLEEP] Going to deep sleep. PIR HIGH will wake me.");

@@ -1,6 +1,16 @@
 #ifndef CAT_FEEDER_H
 #define CAT_FEEDER_H
 
+#pragma once
+#include "user_wifi_and_telegram_config.h"
+#include <Arduino.h>
+#include "esp_camera.h"
+#include <WiFi.h>
+#include <WiFiClientSecure.h>
+#include "esp_bt.h"   // to disable BT for power saving (optional)
+#include "esp_sleep.h"
+#include "driver/rtc_io.h"
+
 
 
 /**
@@ -56,10 +66,10 @@
 #define PIR_PIN           13
 
 // ========= POLLING SETTINGS =========
-const uint32_t POLL_INTERVAL_MS = 3000;  // poll every ~3s as requested
-uint32_t lastPollMs = 0;
-// Track Telegram updates so we don't re-handle old ones:
-long lastUpdateId = -1;
+extern uint32_t lastPollMs;
+extern long     lastUpdateId;
+
+
 
 /**
  * @brief Default photo caption sent with snapshots.
@@ -70,9 +80,7 @@ long lastUpdateId = -1;
 extern const char* PHOTO_CAPTION;
 /** @} */
 
-/** @name Visual feedback
- *  
- */
+
 /**
  * @brief Blink the onboard flash LED for basic visual feedback.
  *
@@ -237,6 +245,10 @@ void setup();
  */
 void loop();
 /** @} */
+
+void enterDeepSleep();
+
+void logWakeCause();
 
 /* -----------------------------------------------------------------------
    Internal helpers (documented for completeness; not part of the public API)
