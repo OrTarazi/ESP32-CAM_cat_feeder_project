@@ -110,6 +110,9 @@ All hardware listed below matches the gear currently on hand.
 **Planned**
 - `/feed` → drive MG996 360° for a fixed duration (dispense)
 
+![Cat Feeder Setup](photos_and_diagrams/feeder_setup.jpg)
+
+
 ---
 
 ## 🪫 Power & Wiring Notes (with the gear we have)
