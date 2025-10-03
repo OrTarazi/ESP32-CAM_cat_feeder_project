@@ -58,7 +58,7 @@ All hardware listed below matches the gear currently on hand.
 
 - **Flow**: PIR detects motion → ESP32 wakes from deep sleep → capture → send to Telegram.  
 - **Chat control**: Send `/snap` for an on-demand image; `/ignore` to dismiss.  
-- **Feeding (planned)**: `/feed` will rotate MG996 for a calibrated pulse.
+- **Feeding**: `/feed` will rotate MG996 for a calibrated pulse.
 
 ---
 
@@ -100,16 +100,11 @@ All hardware listed below matches the gear currently on hand.
 
 ## 📲 Telegram Setup
 
-1. In Telegram, open **@BotFather** → `/newbot` → copy **token**.
-2. Add the bot to your **private group** (or DM).
-3. Get **chat id** (e.g., via **@userinfobot** or a quick API call).
-4. Paste token & chat id into the sketch (see Build & Flash).
-
 **Commands available today**
 - `/snap` → capture new photo
+
 - `/ignore` → acknowledge and do nothing
 
-**Planned**
 - `/feed` → drive MG996 360° for a fixed duration (dispense)
 
 ![Cat Feeder Setup](photos_and_diagrams/Cat-feeder_workflow.jpg)
@@ -133,7 +128,7 @@ All hardware listed below matches the gear currently on hand.
   - Each rail: sprinkle **0.1 µF** ceramics every ~5–10 cm + one **bulk electrolytic** (≥220–470 µF).  
   - Keep camera and Wi-Fi spikes stable during TX.
 
-> The **DT9205A multimeter** is perfect to confirm the LM2596 output is really 5.0 V and that droop under load is acceptable.
+> The **multimeter** is perfect to confirm the LM2596 output is really 5.0 V and that droop under load is acceptable.
 
 ---
 
@@ -144,24 +139,6 @@ All hardware listed below matches the gear currently on hand.
 - **(Optional) Flash LED / Status** → `GPIO4`
 
 *(PIR Vcc → 5 V or its own pack; Servo Vcc → own 4×AA; both with common GND to ESP32-CAM.)*
-
----
-
-## 🔒 Security Quick Tips
-
-- Keep your **BOT_TOKEN** private. Do not commit it.
-- Use a **private group** chat id (starts with `-100...`) or a one-to-one chat.
-- Consider restricting who can send commands (chat id filtering is already in code).
-
----
-
-## 🧪 Basic Test Procedure
-
-1. Power up on bench supply or AA pack → check **5 V rail** on the buck.
-2. Serial monitor @ 115200 → watch boot messages.
-3. Trigger PIR (wave your hand) → device wakes, logs, and sends a **Telegram photo**.
-4. Send `/snap` in chat → receive a fresh image.
-5. Send `/ignore` → device acknowledges and resumes normal loop.
 
 ---
 
@@ -181,17 +158,17 @@ All hardware listed below matches the gear currently on hand.
 - [x] PIR wake from deep sleep + snapshot
 - [x] Telegram photo upload
 - [x] `/snap` and `/ignore` commands
-- [ ] `/feed` command to drive MG996 360°
-- [ ] “Going back to sleep” Telegram status on deep-sleep entry
+- [x] `/feed` command to drive MG996 360°
+- [x] “Going back to sleep” Telegram status on deep-sleep entry
 - [x] Motion “two-button” message (simulate trigger on boot for testing)
-- [ ] Power profiling & sleep current reduction
+- [x] Power profiling & sleep current reduction
 - [ ] (Optional) Sound deterrent **(requires extra buzzer – not in current parts)**
 
 ---
 
 ## 📜 License
 
-**MIT** — © Or Tarazi, 2025.  
+© Or Tarazi, 2025.  
 Feel free to use, modify, and share. Attribution appreciated.
 
 ---
@@ -200,4 +177,5 @@ Feel free to use, modify, and share. Attribution appreciated.
 
 - ESP32-CAM community examples and docs  
 - Telegram Bot API docs  
-- Countless bench hours saved by the **DT9205A** multimeter 😄
+- Cirkit Designer IDE
+- Confluence
