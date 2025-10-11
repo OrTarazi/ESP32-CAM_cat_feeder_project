@@ -2,7 +2,7 @@
 
 DIY smart cat feeder built on the **ESP32-CAM (AI-Thinker)**.  
 Wakes on **PIR motion**, snaps a photo, and talks to you via the **Telegram Bot API**.  
-Designed for **battery power** with deep-sleep and an **LM2596** buck for stable rails.  
+Designed for **battery power** with deep-sleep.
 All hardware listed below matches the gear currently on hand.
 
 ---
