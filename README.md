@@ -24,19 +24,12 @@ All hardware listed below matches the gear currently on hand.
 ## 🧱 Hardware (what’s actually in use)
 
 - **ESP32-CAM + Antenna** (AI-Thinker)
-- **PIR Sensors (3 pcs)** – e.g., HC-SR501 (one used)
+- **PIR Sensors (1 pcs)** – e.g., HC-SR501 (one used)
 - **Servo Motor MG996 – 360° Metal**
-- **5× LM2596 Buck Modules** (one used)
 - **Breadboards (3 pcs, 400 tie points)** (one used)
-- **5× Rocker Switches** (one used as master power)
-- **2× AA Battery Case (4-slot)** (one used for main pack)
 - **1× AA Battery Case (4-slot)** (optionally used for PIR or servo rail)
-- **Capacitors**  
-  - **300 pcs ceramic kit** (0.1 µF etc.)  
-  - **120 pcs electrolytic kit** (e.g., 470 µF bulk)
-- **100 pcs 5 mm LEDs** (status/heartbeat)
-- **Digital Multimeter DT9205A** (bring-up & debugging)
-- **Plastic Organizer Box** (for sanity 😺)
+- **1x Blue LED** (turns on when motion detected)
+- **1x 200ohm res** to power the LED
 
 ![Cat Feeder Setup](photos_and_diagrams/Cat-feeder_assembley.png)
 
@@ -51,31 +44,14 @@ All hardware listed below matches the gear currently on hand.
                      |                |
                      |                +--> [WiFi -> Telegram Bot API]
                      |
-                     +--> (optional) [Status LED / Flash control]
+                     +-->  [Status LED / Flash control]
                      |
-                     +--> (planned)  [MG996 360° Servo -> Feeder]
+                     +-->  [MG996 360° Servo -> Feeder]
 ```
 
 - **Flow**: PIR detects motion → ESP32 wakes from deep sleep → capture → send to Telegram.  
 - **Chat control**: Send `/snap` for an on-demand image; `/ignore` to dismiss.  
 - **Feeding**: `/feed` will rotate MG996 for a calibrated pulse.
-
----
-
-## 🧭 Repository Layout
-
-```
-.
-├─ firmware/
-│  ├─ cat_feeder.cpp        # main sketch (ESP32-CAM + PIR + Telegram)
-│  └─ platformio.ini        # (optional) if you use PlatformIO
-├─ docs/
-│  ├─ wiring.md             # detailed wiring and photos
-│  └─ power_notes.md        # buck setup, caps, current notes
-└─ README.md
-```
-
-*(If you’re using Arduino IDE only, you still keep `firmware/cat_feeder.cpp` as your sketch.)*
 
 ---
 
@@ -109,26 +85,16 @@ All hardware listed below matches the gear currently on hand.
 
 ![Cat Feeder Setup](photos_and_diagrams/Cat-feeder_workflow.jpg)
 
-
-
 ---
 
 ## 🪫 Power & Wiring Notes (with the gear we have)
 
-- **Buck (LM2596)**  
-  - Set output to the **ESP32-CAM requirement** (typ. 5 V to 5V pin; onboard LDO makes 3.3 V).  
-  - Add **0.1 µF ceramic** + **≥470 µF electrolytic** at the buck output (near rails).
 - **PIR**  
   - You can power PIR from 5 V **or** its own AA pack (if you isolate rails).  
   - **Common ground is required** between any signal-sharing devices.
 - **Servo (MG996 360°)**  
-  - Prefer its **own 4×AA pack** (separate from ESP32-CAM), with **0.1 µF + 470 µF** across rails.  
+  - Prefer its **own 4×AA pack** (separate from ESP32-CAM)
   - Tie grounds together (servo GND ↔ ESP32-CAM GND) so the PWM reference is shared.
-- **Decoupling pattern (breadboard rails)**  
-  - Each rail: sprinkle **0.1 µF** ceramics every ~5–10 cm + one **bulk electrolytic** (≥220–470 µF).  
-  - Keep camera and Wi-Fi spikes stable during TX.
-
-> The **multimeter** is perfect to confirm the LM2596 output is really 5.0 V and that droop under load is acceptable.
 
 ---
 
